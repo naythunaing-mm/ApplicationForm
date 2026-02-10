@@ -73,11 +73,11 @@
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Religion</label>
-                    <input type="text" name="religion" class="form-control" placeholder="e.g. Buddhism">
+                    <input type="text" name="religion" class="form-control" placeholder="e.g. Buddhist">
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Race</label>
-                    <input type="text" name="race" class="form-control" placeholder="e.g. Bamar">
+                    <input type="text" name="race" class="form-control" placeholder="e.g. Burmese">
                 </div>
             </div>
 

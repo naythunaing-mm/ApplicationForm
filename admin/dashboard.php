@@ -1,6 +1,12 @@
 <?php 
 include '../config/db.php'; 
 
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $selected_year = isset($_GET['year']) ? mysqli_real_escape_string($conn, $_GET['year']) : '';
 
 $sql = "SELECT * FROM applicants";
@@ -28,13 +34,22 @@ $total_rows = mysqli_num_rows($result);
         .pdf-link { color: #ef4444; font-weight: 600; text-decoration: none; border: 1px solid #fee2e2; padding: 5px 12px; border-radius: 6px; background: #fef2f2; font-size: 0.8rem; }
         .view-btn { color: #4f46e5; background: #eef2ff; border: 1px solid #e0e7ff; padding: 5px 12px; border-radius: 6px; text-decoration: none; font-size: 0.8rem; font-weight: 600; }
         .filter-section { background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 20px; }
+        /* Logout Button Style */
+        .btn-logout { color: #dc3545; border: 1px solid #dc3545; transition: all 0.3s; font-weight: 600; }
+        .btn-logout:hover { background-color: #dc3545; color: white; }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-light bg-white border-bottom py-3 mb-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom py-3 mb-4">
     <div class="container">
         <span class="navbar-brand mb-0 h1 fw-bold"><i class="fas fa-briefcase text-primary me-2"></i> Being Myanmar Admin</span>
+        
+        <div class="ms-auto">
+            <a href="logout.php" class="btn btn-sm btn-logout px-3 rounded-pill">
+                <i class="fas fa-sign-out-alt me-1"></i> LOGOUT
+            </a>
+        </div>
     </div>
 </nav>
 
